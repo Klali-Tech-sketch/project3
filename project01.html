@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+    }
+    header div {
+        flex-basis: 33.3%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        margin-bottom: 10px;
+    }
+
+       .al {
+        display: flex;
+        align-items: center;
+        
+       }
+        .all {
+           
+position: relative;
+left: 50px;
+        }
+div .ri {
+    margin-right: 5px;
+    font-weight: bolder;
+    position: relative;
+    top: 10px;
+}
+.right  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right a {
+    text-decoration: none;
+    color: rgb(6, 6, 124);
+}
+.edge {
+    text-align: end;
+}
+.reg {
+background-color: blue;
+color: white;
+border-radius: 8px;
+width: 80px;
+display: inline-block;
+padding: 5px;
+text-align: center;
+text-decoration: none;
+}
+.log {
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 10px;
+}
+.cal1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(13, 145, 233);
+    font-weight: bolder;
+    font-size: 20px;
+    position: relative;
+    bottom: 23px;
+    right: 10px;
+}
+select {
+    border: none;
+    color: rgb(6, 6, 124);
+    background: none;
+}
+h1 {
+    flex-direction: column;
+            text-align: center;
+            /* justify-content: center; */
+            font-weight: 900;
+            font-size: 50px;
+            margin-bottom: 10px;
+}
+section{
+    display: flex;
+    flex-direction: row;
+    /* border-bottom: 1px solid #ddd; */
+}
+section div {
+    flex-basis: 16.6%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        
+}
+.main1 {
+    text-decoration: none;
+    flex-direction: column;
+            text-align: center;
+            justify-content: space-between;
+            /* justify-content: center; */
+            
+}
+.main1 a {
+    text-decoration: none;
+    padding: 16px;
+    border-bottom: 1px solid grey;
+    margin-bottom: 15px;
+}
+
+
+.main1 .active {
+    color: blue;
+    border-bottom: 2px solid blue;
+}
+.flex-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+   position: relative;
+   top: 50px;
+}
+.text-container {
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    
+}
+.image-container {
+flex-basis: 50%;
+flex-grow: 1;
+flex-shrink: 1;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    bottom: 30px;
+}
+
+ul li{
+    list-style-type: none;
+    padding-left: 25px;
+    
+    line-height: 1.5;
+}
+.dive {
+    background: url(triangle.png) left center no-repeat;
+    background-size: 30px 30px;
+    padding-left: 30px;
+}
+.speed {
+    background: url(circle.png) left center no-repeat;
+    background-size: 25px 25px;
+    padding-left: 30px;
+}
+.close {
+    background: url(square.png) left center no-repeat;
+    background-size: 35px 35px;
+    padding-left: 30px;
+}
+.learn {
+text-decoration: none;
+font-weight: 900;
+position: relative;
+top: 50px;
+left: 30px;
+}
+.arrow{
+    font-weight: bolder;
+}
+.clear {
+    width: 50px;
+    height: 50px;
+}
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 1000;
+    padding: 80px 20px 20px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+}
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.mobile-menu-content select{
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid;
+    font-size: 16px;
+}
+.mobile-menu-content a {
+    display: block;
+    padding: 15px 0;
+    text-decoration: none;
+    color: #333;
+    font-weight: bolder;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+}
+#menu-toggle {
+    display: none;
+}
+.mobile-menu-content a.pro {
+    color: #2d5be3;
+}
+/*checkbox hack */
+#menu-toggle:checked ~ .mobile-menu {
+    transform: translateX(0);
+}
+#menu-toggle:checked + .hamburger span:nth-child(1){
+transform: rotate(-45deg) translate(-5px, 6px);
+}
+#menu-toggle:checked + .hamburger span:nth-child(2){
+    opacity: 0;
+}
+#menu-toggle:checked + .hamburger span:nth-child(3){
+transform: rotate(45deg) translate(-5px, -6px);
+}
+@media screen and (max-width: 725px){
+    h1 {
+            font-weight: 900;
+            font-size: 20px;
+}
+.flex-container {
+   flex-direction: column;
+}
+.text-container,.image-container {
+    flex-direction: row;
+}
+.image-container {
+    order: 1;
+    display: inline-block;
+    position: relative;
+    right: 100px;
+}
+.text-container {
+    order: 2;
+}
+
+.main1 {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 0;
+    margin-top: 15px;
+}
+.main1 a {
+    width: 16.6%;
+    border-bottom: 0px;
+    flex-wrap: wrap;
+}
+.main1 a:hover {
+    background-color: rgb(63, 63, 158);
+    color: white;
+}
+.al, .edge {
+    flex-basis: 47.5%;
+}
+.right .ri {
+    display: none;
+}
+.hamburger {
+    display: block;
+    position: relative;
+    top: -7px;
+}
+.mobile-menu {
+    display: block;
+    width: 50%;
+}
+#menu-toggle {
+    display: block;
+}
+.edge {
+    position: relative;
+    right: 50px;
+}
+.ri:hover {
+background-color: #2d5be3;
+color: #eee;
+}
+
+select.ri {
+    border: none;
+    padding-left: 0;
+    border-bottom: 1px solid rgb(243, 239, 239);
+    color: #000;
+}
+}
+@media screen and (max-width: 850px){
+    h1 {
+            font-weight: 900;
+            font-size: 20px;
+}
+.flex-container {
+   flex-direction: column;
+}
+.text-container,.image-container {
+    flex-direction: row;
+}
+.image-container {
+    order: 1;
+    display: inline-block;
+    position: relative;
+    right: 100px;
+}
+.text-container {
+    order: 2;
+}
+
+.main1 {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 0;
+    margin-top: 15px;
+}
+.main1 a {
+    width: 16.6%;
+    border-bottom: 0px;
+    flex-wrap: wrap;
+}
+.main1 a:hover {
+    background-color: rgb(63, 63, 158);
+    color: white;
+}
+.al, .edge {
+    flex-basis: 47.5%;
+}
+.right .ri {
+    display: none;
+}
+.hamburger {
+    display: block;
+    position: relative;
+    top: -7px;
+}
+.mobile-menu {
+    display: block;
+    width: 50%;
+}
+#menu-toggle {
+    display: block;
+}
+.edge {
+    position: relative;
+    right: 50px;
+}
+.ri:hover {
+background-color: #2d5be3;
+color: #eee;
+}
+
+select.ri {
+    border: none;
+    padding-left: 0;
+    border-bottom: 1px solid rgb(243, 239, 239);
+    color: #000;
+}
+}
+    </style>
+</head>
+<body>
+    <header style="border-bottom: 1px solid gray;">
+        <div class="al">
+        <span class="all"><img src="cal.png" alt="" class="clear"><span class="cal1">Calendly</span></span>
+    </div>
+    <div class="right">
+        <a href="#" class="ri">Product</a>
+        <select name="Solutions" id="" class="ri">
+            <option value="Solutions">Solutions</option>
+            <option value="Meetings">Book Meetings</option>
+            <option value="Schedules">Make Schedules</option>
+            <option value="Reminders">Set Reminders</option>
+        </select>
+        <a href="#" class="ri">Enterprise</a>
+        <a href="#" class="ri">Pricing</a>
+        <select name="" id="" class="ri">
+            <option value="Resources">Resources</option>
+            <option value="Calenders">Calenders</option>
+            <option value="Timer">Timer</option>
+        </select>
+    </div>
+    <div class="edge">
+        <a href="#" class="log">Login</a>
+        <a href="#" class="reg">SignUp</a>
+    </div>
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#" class="ri">Product</a>
+        <select name="Solutions" id="" class="ri">
+            <option value="Solutions">Solutions</option>
+            <option value="Meetings">Book Meetings</option>
+            <option value="Schedules">Make Schedules</option>
+            <option value="Reminders">Set Reminders</option>
+        </select>
+        <a href="#" class="ri">Enterprise</a>
+        <a href="#" class="ri">Pricing</a>
+        <select name="" id="" class="ri">
+            <option value="Resources">Resources</option>
+            <option value="Calenders">Calenders</option>
+            <option value="Timer">Timer</option>
+        </select>
+        </div>
+    </div>
+    </header>
+<div>
+    <h1>Smarter scheduling for teams <br>who conduct meetings at scale</h1>
+</div>
+<section class="main">
+    <div class="main1">
+<a href="#" class="active sec">Sales</a>
+<a href="#" class="sec">Marketing</a>
+<a href="#" class="sec">Customer Success</a>
+<a href="#" class="re sec">Recruiting</a>
+<a href="#" class="it sec">IT</a>
+<a href="#" class="ed sec">Education</a>
+    </div>
+</section>
+<div class="flex-container">
+<div class="text-container">
+    <ul>
+        <li class="dive" style="font-weight: bolder; " >Dive more revenue</li>
+       <p style="font-size: 12px;">Book high-value meetings in seconds and turn scheduling into a competitive advantage</p>
+<li class="speed" style="font-weight: bolder; ">Speed up your sales cycle</li>
+        <p style="font-size: 12px;">Keep your deal momentum high and remove scheduling friction at every stage of your sales cycle</p>
+        <li class="close" style="font-weight: bolder; ">Close more deals</li>
+        <p style="font-size: 12px;">Customize reminder an follow up workflows to move deals along, integrate with sales tools, and remove logistics tasks to focus on selling</p>
+    </ul>
+  <a href="#" class="learn">Learn more <span class="arrow"> &rarr;</span></a>  
+</div>
+<div class="image-container">
+    <img src="man.jpg" alt="">
+</div>
+</div>
+
+
+</body>
+</html>
